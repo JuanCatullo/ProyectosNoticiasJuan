@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 
-namespace ProyectoJuan.Utilidades
+namespace ProyectoNoticiasJuan.Utilidades
 {
     public class Utils
     {

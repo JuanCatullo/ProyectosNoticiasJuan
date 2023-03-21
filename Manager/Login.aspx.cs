@@ -1,4 +1,5 @@
-﻿using ProyectosNoticiasJuan.Utilidades;
+﻿using ProyectoNoticiasJuan.Utilidades;
+using ProyectosNoticiasJuan.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -45,13 +46,13 @@ namespace ProyectosNoticiasJuan.manager
                 }
                 else
                 {
-                    Utilidades.Utils.ShowAlertAjax(this.Page, "Usuario y clave no coinciden.", "");
+                    Utils.ShowAlertAjax(this.Page, "Usuario y clave no coinciden.", "");
                 }
 
             }
             else
             {
-                Utilidades.Utils.ShowAlertAjax(this.Page, sRet, "");
+                Utils.ShowAlertAjax(this.Page, sRet, "");
             }
 
 

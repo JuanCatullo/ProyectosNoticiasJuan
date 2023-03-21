@@ -11,18 +11,10 @@ namespace ProyectosNoticiasJuan
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USUARIO_NOMBRE"] is null)
+            if (Session["USUARIO_NOMBRE"] != null)
             {
-
+                //lblusuario.Text = "Hola " + Session["USUARIO_NOMBRE"].ToString();
             }
-            else
-            {
-                if (!string.IsNullOrEmpty(Session["USUARIO_NOMBRE"].ToString()))
-                {
-                    lblUsuario.Text = Session["USUARIO_NOMBRE"].ToString();
-                }
-            }
-
 
         }
     }

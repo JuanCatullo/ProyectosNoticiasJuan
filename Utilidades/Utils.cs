@@ -255,11 +255,6 @@ namespace ProyectoNoticiasJuan.Utilidades
 
         }
 
-        internal static void ShowAlertAjax(Page page)
-        {
-            throw new NotImplementedException();
-        }
-
 
         #endregion
 

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="ProyectosNoticiasJuan.Manager.Usuarios" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.master.cs" Inherits="ProyectosNoticiasJuan.Manager.Usuarios" %>
 
 <!DOCTYPE html>
 
@@ -8,9 +8,6 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-
-   
-
 </head>
 <body>
     <form id="form1" runat="server">

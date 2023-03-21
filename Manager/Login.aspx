@@ -1,20 +1,31 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="ProyectosNoticiasJuan.Manager.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectosNoticiasJuan.manager.Login" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<!DOCTYPE html>
+    <h1>LOGIN</h1>
 
-<html>
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+
+    
+        <div class="row">
+            
+            <section class="col-md-4" aria-labelledby="librariesTitle">
+                <div class="">
+                <asp:TextBox ID="txtUsuario" TextMode="Email" runat="server" required CssClass="form-control "></asp:TextBox>
+                </div>
+
+                <div class="">
+                <asp:TextBox ID="txtClave" TextMode="Password" required runat="server"  CssClass="form-control "></asp:TextBox>
+                </div>
+
+
+                <div class="">
+                    <asp:Button ID="cmdLogin" runat="server" Text="Ingresar" CssClass="btn btn-info" OnClick="cmdLogin_Click"/>
+                </div>
+
+            </section>
+            <section class="col-md-4" aria-labelledby="hostingTitle">
+                
+            </section>
         </div>
-    </form>
-</body>
-</html>
+
+
+</asp:Content>

@@ -13,7 +13,5 @@ namespace ProyectosNoticiasJuan.Manager
         {
 
         }
-
-
     }
 }

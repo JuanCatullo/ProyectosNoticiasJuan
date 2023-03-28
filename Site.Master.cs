@@ -13,7 +13,14 @@ namespace ProyectosNoticiasJuan
         {
             if (Session["USUARIO_NOMBRE"] != null)
             {
-                //lblusuario.Text = "Hola " + Session["USUARIO_NOMBRE"].ToString();
+                lblUsuario.Text = "Hola " + Session["USUARIO_NOMBRE"].ToString();
+                
+
+            }
+            else
+            {
+                lblUsuario.Text = "Usuario sin autenticar";
+                
             }
 
         }

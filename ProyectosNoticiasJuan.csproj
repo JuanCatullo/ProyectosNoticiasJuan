@@ -127,7 +127,8 @@
     <Content Include="Manager\Login.aspx" />
     <Content Include="Manager\Usuario.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Manager\Usuarios.aspx" />
+    <Content Include="ctrlMenuNavegacion.ascx" />
+    <Content Include="Manager\UsuariosRegistrados.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -201,12 +202,19 @@
     <Compile Include="Manager\Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager\Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
+    <Compile Include="ctrlMenuNavegacion.ascx.cs">
+      <DependentUpon>ctrlMenuNavegacion.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manager\Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
+    <Compile Include="ctrlMenuNavegacion.ascx.designer.cs">
+      <DependentUpon>ctrlMenuNavegacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\UsuariosRegistrados.aspx.cs">
+      <DependentUpon>UsuariosRegistrados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\UsuariosRegistrados.aspx.designer.cs">
+      <DependentUpon>UsuariosRegistrados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

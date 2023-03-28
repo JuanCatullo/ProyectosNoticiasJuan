@@ -39,7 +39,7 @@ namespace ProyectosNoticiasJuan.manager
 
                     //SETEO LA COOKIE DE AUTENTICACION Y DESPUES REDIRIJO A LA HOME DEL MANAGER
                     System.Web.Security.FormsAuthentication.SetAuthCookie(txtUsuario.Text.Trim(), true);
-                    Response.Redirect("default.aspx");
+                    Response.Redirect("/Manager/UsuariosRegistrados.aspx");
 
 
                     //Utilidades.Utils.ShowAlertAjax(this.Page, "Usuario: " + dt.Rows[0]["email"].ToString(), "");

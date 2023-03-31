@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectosNoticiasJuan.Manager
+namespace ProyectosNoticiasJuan.manager
 {
     public partial class Usuario : System.Web.UI.MasterPage
     {

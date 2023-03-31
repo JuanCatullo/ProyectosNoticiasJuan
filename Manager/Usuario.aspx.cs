@@ -8,14 +8,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectosNoticiasJuan.manager
+namespace ProyectosNoticiasJuan.Manager
 {
-    public partial class Usuario : System.Web.UI.MasterPage
-    {
+	public partial class Usuario : System.Web.UI.Page
+	{
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        protected void cmdEnviar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

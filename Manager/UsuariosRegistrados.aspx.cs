@@ -1,5 +1,4 @@
-﻿using ProyectoNoticiasJuan.Utilidades;
-using ProyectosNoticiasJuan.Utilidades;
+﻿using ProyectosNoticiasJuan.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,7 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
-namespace ProyectosNoticiasJuan.aspx
+namespace ProyectosNoticiasJuan.Manager
 {
     public partial class UsuariosRegistrados : System.Web.UI.Page
     {

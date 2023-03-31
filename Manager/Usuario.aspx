@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectoNoticiasJuan.manager.Usuario" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectosNoticiasJuan.manager.Usuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+
          <br />     <br />     <br />     <br /> <br />
 
     <div class="row">

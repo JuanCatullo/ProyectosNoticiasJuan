@@ -1,5 +1,4 @@
-﻿using ProyectoNoticiasJuan.Utilidades;
-using ProyectosNoticiasJuan.Utilidades;
+﻿using ProyectosNoticiasJuan.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectosNoticiasJuan.manager
+namespace ProyectosNoticiasJuan.Manager
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -19,7 +18,10 @@ namespace ProyectosNoticiasJuan.manager
 
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
-            string sRet = "";
+
+			
+
+			string sRet = "";
             sRet = ValidarForm();
 
             DataTable dt = new DataTable();

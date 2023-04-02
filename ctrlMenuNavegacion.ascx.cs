@@ -7,22 +7,24 @@ using System.Web.UI.WebControls;
 
 namespace ProyectosNoticiasJuan
 {
+    
     public partial class ctrlMenuNavegacion : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            if (Session["USUARIO_NOMBRE"] != null)
             {
-                //plcManager.Visible = true;
+
+                plcManager.Visible = true;
 
             }
             else
             {
-                //plcManager.Visible = false;
+
+                plcManager.Visible = false;
             }
 
         }
-
         protected void lnkSalir_Click(object sender, EventArgs e)
         {
             Session.Clear();

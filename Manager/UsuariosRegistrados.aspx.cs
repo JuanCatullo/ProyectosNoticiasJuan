@@ -1,19 +1,15 @@
-﻿using ProyectoNoticiasJuan.Utilidades;
-using ProyectosNoticiasJuan.Utilidades;
+﻿using ProyectosNoticiasJuan.Utilidades;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
-namespace ProyectosNoticiasJuan.aspx
+namespace ProyectosNoticiasJuan.manager
 {
-    public partial class UsuariosRegistrados : System.Web.UI.Page
+    public partial class Usuarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,24 +22,20 @@ namespace ProyectosNoticiasJuan.aspx
 
         void CargarUsuariosRegistrados()
         {
-            string sRett = "";
+            string sRet = "";
             DataTable dt = new DataTable();
 
-            sRett = Datos.ObtenerUsuariosRegistrados(ref dt);
+            sRet = Datos.ObtenerUsuariosRegistrados(ref dt);
 
-            if (sRett == "")
+            if (sRet == "")
             {
-                //cono.DataValueField = "id";
-                //cono.DataTextField = "descripcion";
-                //cono.DataSource = dt;
-                //cono.DataBind();
                 gvUsuarios.DataSource = dt;
                 gvUsuarios.DataBind();
             }
-
-
-
-
+            else
+            {
+                Utils.ShowAlertAjax(this.Page, sRet, "");
+            }
         }
 
         protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -52,31 +44,25 @@ namespace ProyectosNoticiasJuan.aspx
             {
                 Response.Redirect("Usuario.aspx" + "?usuario_id=" + e.CommandArgument.ToString());
             }
+
             if (e.CommandName.ToString() == "ELIMINAR")
             {
+                //LLAMO A LA FUNCION QUE ELIMINA AL USUARIO
                 string sRetorno = "";
                 sRetorno = Datos.EliminarUsuario(Convert.ToInt32(e.CommandArgument.ToString()));
+
                 if (sRetorno == "")
                 {
                     Utils.ShowAlertAjax(this.Page, "Usuario eliminado exitosamente", "");
+                    //RECARGO LA GRILLA ASI MUESTRA LOS CAMBIOS
                     CargarUsuariosRegistrados();
                 }
                 else
                 {
-                    Utils.ShowAlertAjax(this.Page, "Error al buscar " + sRetorno, "");
+                    Utils.ShowAlertAjax(this.Page, "Error al borrar: " + sRetorno, "");
                 }
+
             }
-
-            
-
         }
-
-
-            
-
     }
-
 }
-    
-
-    

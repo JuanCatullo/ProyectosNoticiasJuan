@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectosNoticiasJuan.aspx
+namespace ProyectosNoticiasJuan.Manager
 {
 
 

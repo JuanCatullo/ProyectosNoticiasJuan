@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectosNoticiasJuan.manager.Usuario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectosNoticiasJuan.Manager.Usuario" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
          <br />     <br />     <br />     <br /> <br />
@@ -8,16 +9,16 @@
 
             <asp:TextBox ID="txtname" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
             
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" Display="None" ControlToValidate="txtNombre" ErrorMessage="Falta el nombre"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" Display="None" ControlToValidate="txtname" ErrorMessage="Falta el nombre"></asp:RequiredFieldValidator>
         </div>
         <div class="col-md-4">
             <asp:TextBox ID="txtlastname" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
 
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  Display="None" ValidationGroup="Registro" ErrorMessage="Falta el apellido" ControlToValidate="txtApellido"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  Display="None" ValidationGroup="Registro" ErrorMessage="Falta el apellido" ControlToValidate="txtlastname"></asp:RequiredFieldValidator>
         </div>
         <div class="col-md-4">
             <asp:TextBox ID="txtdni" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Display="None" ValidationGroup="Registro" runat="server" ErrorMessage="Falta el DNI" ControlToValidate="txtDNI"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Display="None" ValidationGroup="Registro" runat="server" ErrorMessage="Falta el DNI" ControlToValidate="txtdni"></asp:RequiredFieldValidator>
         </div>
     </div>
     <br />

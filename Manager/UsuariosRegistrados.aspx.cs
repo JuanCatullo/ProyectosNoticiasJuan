@@ -37,19 +37,20 @@ namespace ProyectosNoticiasJuan.manager
                 Utils.ShowAlertAjax(this.Page, sRet, "");
             }
         }
-
         protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName.ToString() == "EDITAR")
             {
                 Response.Redirect("Usuario.aspx" + "?usuario_id=" + e.CommandArgument.ToString());
+
+
             }
 
             if (e.CommandName.ToString() == "ELIMINAR")
             {
                 //LLAMO A LA FUNCION QUE ELIMINA AL USUARIO
                 string sRetorno = "";
-                sRetorno = Datos.EliminarUsuario(Convert.ToInt32(e.CommandArgument.ToString()));
+              sRetorno = Datos.EliminarUsuario(Convert.ToInt32(e.CommandArgument.ToString()));
 
                 if (sRetorno == "")
                 {

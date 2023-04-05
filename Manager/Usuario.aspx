@@ -1,90 +1,122 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectosNoticiasJuan.Manager.Usuario" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ProyectosNoticiasJuan.manager.Usuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-         <br />     <br />     <br />     <br /> <br />
 
-    <div class="row">
-        <div class="col-md-4">
 
-            <asp:TextBox ID="txtname" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
+
+        <div class="container-fluid">
+
+
+        <div class="panel panel-primary">
+
+         <div class="panel-heading">
+            <h3 class="panel-title">Formulario Registro</h3>
+        </div>
+
+
+
+        <div class="panel-body">
+         <div class="form-horizontal">
+
+
+
+  <div class="col-md-4"></div>
+         
+  <div class="col-md-8">
+
+        <div class="form-group">
+            <asp:TextBox ID="txtNombre" class="form-control" placeholder="Nombre" runat="server"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Falta Nombre"  ControlToValidate="txtNombre" Display="Static" SetFocusOnError="True" CssClass="center-block text-center"></asp:RequiredFieldValidator>
+
+       </div>
+
+          <div class="form-group">
+            <asp:TextBox ID="txtApellido" class="form-control" placeholder="Apellido" runat="server"></asp:TextBox>
+              <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Falta Apellido"  ControlToValidate="txtApellido" Display="Static" SetFocusOnError="True" CssClass="center-block text-center"></asp:RequiredFieldValidator>
+
+       </div>
+
+              <div class="form-group">
+            <asp:TextBox ID="txtDni" class="form-control" placeholder="DNI" runat="server"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Falta Dni"  ControlToValidate="txtDni" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
+         </div>
+
+
+       <div class="form-group">
+    <asp:DropDownList ID="ddlPais" cssClass="form-control" runat="server">
+       
+
+    </asp:DropDownList>
+        </div>
+
+
+       <div class="form-group">
+
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server">
             
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" Display="None" ControlToValidate="txtname" ErrorMessage="Falta el nombre"></asp:RequiredFieldValidator>
-        </div>
-        <div class="col-md-4">
-            <asp:TextBox ID="txtlastname" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
+            </asp:RadioButtonList>
 
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  Display="None" ValidationGroup="Registro" ErrorMessage="Falta el apellido" ControlToValidate="txtlastname"></asp:RequiredFieldValidator>
-        </div>
-        <div class="col-md-4">
-            <asp:TextBox ID="txtdni" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Display="None" ValidationGroup="Registro" runat="server" ErrorMessage="Falta el DNI" ControlToValidate="txtdni"></asp:RequiredFieldValidator>
-        </div>
-    </div>
-    <br />
+       </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <asp:DropDownList ID="ddlPais" runat="server" ValidationGroup="Registro" CssClass="form-control" >
+       <div class="form-group">
+
+                <asp:CheckBoxList ID="CblConocimiento"  runat="server" >
                     
-                   </asp:DropDownList>
-              </div>
-        <div class="col-md-4">
+                </asp:CheckBoxList>
 
-
-
-
-        <asp:RadioButtonList ID="rblCurso" runat="server" ValidationGroup="Registro" >
-        <asp:ListItem Text="NET" Value="NET"></asp:ListItem>
-        <asp:ListItem Text="JAVA" Value="JAVA"></asp:ListItem>
-        <asp:ListItem Text="UX/UI" Value="UX/UI"></asp:ListItem>
-    </asp:RadioButtonList>
-                    </div>
-        <div class="col-md-4">
-        <asp:CheckBoxList ID="chklConocimientos" runat="server" ValidationGroup="Registro" >
-        <asp:ListItem Text="HTML" Value="HTML"></asp:ListItem>
-        <asp:ListItem Text="Javascript" Value="Javascript"></asp:ListItem>
-        <asp:ListItem Text="Jquery" Value="Jquery"></asp:ListItem>
-        <asp:ListItem Text="CSS" Value="CSS"></asp:ListItem>
-        <asp:ListItem Text="NET" Value="NET"></asp:ListItem>
-        <asp:ListItem Text="SQL Server" Value="SQL Server"></asp:ListItem>
-    </asp:CheckBoxList>
-                    </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-        <div class="col-md-4">
-            <asp:TextBox ID="txtFecha" TextMode="Date" CssClass="form-control" runat="server" ValidationGroup="Registro"></asp:TextBox>
-            
-            </div>
-
-        <div class="col-md-4">
-            
-            </div>
-
-        <div class="col-md-4">
-            
-            </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-4">
-
-            <asp:Label ID="lblMensajeError" runat="server" Text=""></asp:Label>
-            
-            <asp:Button ID="cmdEnviar" CssClass="btn btn-primary" runat="server" Text="Enviar" OnClick="cmdEnviar_Click" />
-        
-        
         </div>
 
+
+
+        <div class="form-group">
+            <asp:TextBox ID="txtEmail" Cssclass="form-control" placeholder="Email" runat="server"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Falta Email"  ControlToValidate="txtEmail" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
+        </div>
+
+       <div class="form-group">
+            <asp:TextBox ID="txtFecha"  Cssclass="form-control" placeholder="Fecha de Nacimiento" runat="server"></asp:TextBox>
+       </div>
+
+
+       <div class="form-group"> 
+           <asp:TextBox ID="txtOConocimientos" Cssclass="form-control" placeholder="Otros Conocimientos" runat="server"></asp:TextBox>
+       </div>
+
+
+       <div class="form-group">
+               <asp:TextBox ID="txtClave" Cssclass="form-control" placeholder="Clave" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Falta Password"  ControlToValidate="txtClave" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
+       </div>    
+
+
+       <div class="form-group">
+           <asp:TextBox ID="txtClave1" Cssclass="form-control" placeholder="Repetir Clave" runat="server"></asp:TextBox>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Verifique la password"  ControlToValidate="txtClave1" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
+
+       </div> 
+
+
+       <div class="form-group">
+
+           <asp:Label ID="Label1" runat="server" CssClass="text-center center-block" ></asp:Label>
+            <div class="btn-group" role="group">
+
+                <asp:Button ID="Button1" type="submit" Cssclass="btn btn-default center-block" role="group" runat="server" Text="Enviar" OnClick="Button1_Click" />
+
+                <asp:Button ID="Button2" type="submit" Cssclass="btn btn-default center-block" role="group" runat="server" Text="Cancelar" />
+            </div>
+
+        </div>
+
+      </div>
+
+
+
+             </div>
+        </div>
+   </div>
     </div>
-
-
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Registro" ShowMessageBox="True"  ShowSummary="False" />
-
-
-
 
 </asp:Content>
+
+

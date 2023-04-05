@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Drawing;
+using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Web;
-using System.Windows.Input;
+using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 
 namespace ProyectosNoticiasJuan.Utilidades
 {
     public class Datos
     {
-
-        #region "combos"
-
         public static string ObtenerPaises(ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
@@ -38,12 +33,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 return ex.Message;
             }
         }
-
-        #endregion
-
-
-        #region "Usuarios"
-        public static string ObtenerUsuariosRegistrados(ref DataTable dt)
+        public static string ObtenerUsuariosRegistrados(int iId, ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
@@ -55,6 +45,9 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
+                MyDataAdapter.SelectCommand.Parameters.Add("@usuario_id", SqlDbType.Int);
+                MyDataAdapter.SelectCommand.Parameters["@usuario_id"].Value = iId;
+
                 dt = new DataTable();
                 MyDataAdapter.Fill(dt);
                 return "";
@@ -65,8 +58,7 @@ namespace ProyectosNoticiasJuan.Utilidades
             }
         }
 
-
-        public static string ObtenerUsuarioRegistrado(int iId, ref DataTable dt)
+        public static string ObtenerNoticia(int iId, ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
@@ -74,12 +66,76 @@ namespace ProyectosNoticiasJuan.Utilidades
             try
             {
                 MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-                MyDataAdapter = new SqlDataAdapter("spObtenerUsuarioRegistrado", MyConnection);
+                MyDataAdapter = new SqlDataAdapter("spObtenerNoticia", MyConnection);
                 MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
-                MyDataAdapter.SelectCommand.Parameters.Add("@usuario_id", SqlDbType.Int);
-                MyDataAdapter.SelectCommand.Parameters["@usuario_id"].Value = iId;
+                MyDataAdapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+                MyDataAdapter.SelectCommand.Parameters["@id"].Value = iId;
+
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        
+
+        public static string ObtenerNoticias(ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerNoticias", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        public static string ObtenerCursos(ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerCursos", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        public static string ObtenerConocimientos(ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerConocimientos", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
                 dt = new DataTable();
@@ -92,40 +148,28 @@ namespace ProyectosNoticiasJuan.Utilidades
             }
         }
 
-
-
-        public static string EliminarUsuario(int iId)
+        public static string ObtenerCategoria(ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
-            SqlCommand MyCommand = default(SqlCommand);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
 
             try
             {
                 MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-                MyCommand = new SqlCommand("spEliminarUsuario", MyConnection);
-                MyCommand.CommandType = CommandType.StoredProcedure;
+                MyDataAdapter = new SqlDataAdapter("spObtenerCategoria", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
-                MyCommand.Parameters.AddWithValue("@id", iId);
-
-                //ACCIONES
-                MyConnection.Open();
-                MyCommand.ExecuteNonQuery();
-                MyConnection.Close();   //abrir y cerrar es critico a nivel performance
-                MyConnection.Dispose();
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
                 return "";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
-
-
-
         }
-
-
-        public static string ActualizarUsuario(int iId, string txtname, string txtlastname, string txtdni, int ddlpais, int miRadioButtonList, string email, string Fechanac, string otros, string password)
+        public static string ActualizarUsuario(int iId, string sNombre, string sApellido, string sDni, string sEmail, int iPais, int RadioButtonList1, DateTime sFecha, string sConocimientos, string sClave)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -139,23 +183,20 @@ namespace ProyectosNoticiasJuan.Utilidades
                 //AGREGO EL PARAMETRO CON EL VALOR DEL PARAMETRO AL COMANDO
                 MyCommand.Parameters.AddWithValue("@id", iId);
 
-                MyCommand.Parameters.AddWithValue("@nombre", txtname);
+                MyCommand.Parameters.AddWithValue("@nombre", sNombre);
 
-                MyCommand.Parameters.AddWithValue("@apellido", txtlastname);
+                MyCommand.Parameters.AddWithValue("@apellido", sApellido);
 
-                MyCommand.Parameters.AddWithValue("@dni", txtdni);
+                MyCommand.Parameters.AddWithValue("@dni", sDni);
 
-                MyCommand.Parameters.AddWithValue("@id_pais", ddlpais);
+                MyCommand.Parameters.AddWithValue("@email", sEmail);
 
-                MyCommand.Parameters.AddWithValue("@curso_id", miRadioButtonList);
+                MyCommand.Parameters.AddWithValue("@id_pais", iPais);
 
-                MyCommand.Parameters.AddWithValue("@email", email);
-
-                MyCommand.Parameters.AddWithValue("@fecha_nacimiento", Fechanac);
-
-                MyCommand.Parameters.AddWithValue("@conocimientos", otros);
-
-                MyCommand.Parameters.AddWithValue("@contraseña", password);
+                MyCommand.Parameters.AddWithValue("@curso_id", RadioButtonList1);
+                MyCommand.Parameters.AddWithValue("@fecha_nacimiento", sFecha);
+                MyCommand.Parameters.AddWithValue("@conocimientos", sConocimientos);
+                MyCommand.Parameters.AddWithValue("@contraseña", sClave);
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -169,12 +210,49 @@ namespace ProyectosNoticiasJuan.Utilidades
             {
                 return ex.Message;
             }
+
         }
 
+        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlCommand MyCommand = default(SqlCommand);
 
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyCommand = new SqlCommand("spActualizarNoticia", MyConnection);
+                MyCommand.CommandType = CommandType.StoredProcedure;
 
+                //AGREGO EL PARAMETRO CON EL VALOR DEL PARAMETRO AL COMANDO
+                MyCommand.Parameters.AddWithValue("@id", iId);
 
-        public static string InsertarUsuario(int iId, string txtname, string txtlastname, string txtdni, int ddlpais, int miRadioButtonList, string email, string Fechanac, string otros, string password)
+                MyCommand.Parameters.AddWithValue("@titulo", sTitulo);
+
+                MyCommand.Parameters.AddWithValue("@copete", sCopete);
+
+                MyCommand.Parameters.AddWithValue("@texto", sTexto);
+                MyCommand.Parameters.AddWithValue("@imagen", sImagen);
+                MyCommand.Parameters.AddWithValue("@orden", sOrden);
+                MyCommand.Parameters.AddWithValue("@fecha", sFecha);
+                MyCommand.Parameters.AddWithValue("@activo", sActivo);
+                MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
+
+                //ACCIONES A MANO
+                MyConnection.Open(); //ABRO CONEXION
+                MyCommand.ExecuteNonQuery(); //EJECUTO COMANDO
+                MyConnection.Close(); //CIERRO CONEXION
+                MyConnection.Dispose(); //DESCARTO CONEXION
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+        public static string InsertarUsuario(string sNombre, string sApellido, string sDni, string sEmail, int sDdlPais, int RadioButtonList1, DateTime sFecha, string sConocimientos, string sClave)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -186,29 +264,19 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.CommandType = CommandType.StoredProcedure;
 
                 //AGREGO EL PARAMETRO CON EL VALOR DEL PARAMETRO AL COMANDO
+                //MyCommand.Parameters.AddWithValue("@id", iId);
 
-                MyCommand.Parameters.AddWithValue("@nombre", txtname);
+                MyCommand.Parameters.AddWithValue("@nombre", sNombre);
 
-                MyCommand.Parameters.AddWithValue("@apellido", txtlastname);
+                MyCommand.Parameters.AddWithValue("@apellido", sApellido);
 
-                MyCommand.Parameters.AddWithValue("@dni", txtdni);
-
-                MyCommand.Parameters.AddWithValue("@id_pais", ddlpais);
-
-                MyCommand.Parameters.AddWithValue("@curso_id", miRadioButtonList);
-
-                MyCommand.Parameters.AddWithValue("@email", email);
-
-                MyCommand.Parameters.AddWithValue("@fecha_nacimiento", Fechanac);
-
-                MyCommand.Parameters.AddWithValue("@conocimientos", otros);
-
-                MyCommand.Parameters.AddWithValue("@contraseña", password);
-
-
-
-
-
+                MyCommand.Parameters.AddWithValue("@dni", sDni);
+                MyCommand.Parameters.AddWithValue("@email", sDdlPais);
+                MyCommand.Parameters.AddWithValue("@id_pais", sEmail);
+                MyCommand.Parameters.AddWithValue("@curso_id", RadioButtonList1);
+                MyCommand.Parameters.AddWithValue("@fecha_nacimiento", sFecha);
+                MyCommand.Parameters.AddWithValue("@contraseña", sClave);
+               
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -222,10 +290,103 @@ namespace ProyectosNoticiasJuan.Utilidades
             {
                 return ex.Message;
             }
+
         }
 
+        public static string InsertarNoticia(string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlCommand MyCommand = default(SqlCommand);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyCommand = new SqlCommand("spInsertarNoticia", MyConnection);
+                MyCommand.CommandType = CommandType.StoredProcedure;
+
+                //AGREGO EL PARAMETRO CON EL VALOR DEL PARAMETRO AL COMANDO
+                //MyCommand.Parameters.AddWithValue("@id", iId);
+
+                MyCommand.Parameters.AddWithValue("@titulo", sTitulo);
+
+                MyCommand.Parameters.AddWithValue("@copete", sCopete);
+
+                MyCommand.Parameters.AddWithValue("@texto", sTexto);
+                MyCommand.Parameters.AddWithValue("@imagen", sImagen);
+                MyCommand.Parameters.AddWithValue("@orden", sOrden);
+                MyCommand.Parameters.AddWithValue("@fecha", sFecha);
+                MyCommand.Parameters.AddWithValue("@activo", sActivo);
+                MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
+
+                //ACCIONES A MANO
+                MyConnection.Open(); //ABRO CONEXION
+                MyCommand.ExecuteNonQuery(); //EJECUTO COMANDO
+                MyConnection.Close(); //CIERRO CONEXION
+                MyConnection.Dispose(); //DESCARTO CONEXION
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+        public static string EliminarUsuario(int iId)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlCommand MyCommand = default(SqlCommand);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyCommand = new SqlCommand("spEliminarUsuario", MyConnection);
+                MyCommand.CommandType = CommandType.StoredProcedure;
+
+                MyCommand.Parameters.AddWithValue("@id", iId);
+
+                MyConnection.Open();
+                MyCommand.ExecuteNonQuery();
+                MyConnection.Close();
+                MyConnection.Dispose();
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
 
 
+        }
+
+        public static string EliminarNoticia(int iId)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlCommand MyCommand = default(SqlCommand);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyCommand = new SqlCommand("spEliminarNoticia", MyConnection);
+                MyCommand.CommandType = CommandType.StoredProcedure;
+
+                MyCommand.Parameters.AddWithValue("@id", iId);
+
+                MyConnection.Open();
+                MyCommand.ExecuteNonQuery();
+                MyConnection.Close();
+                MyConnection.Dispose();
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+
+        }
         public static string LoginUsuario(string sUsuario, string sClave, ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
@@ -255,13 +416,10 @@ namespace ProyectosNoticiasJuan.Utilidades
             }
         }
 
-
-
-
-        #endregion
-
-
     }
 }
+
+
+
 
 

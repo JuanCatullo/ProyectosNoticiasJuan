@@ -125,9 +125,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Global.asax" />
     <Content Include="manager\Login.aspx" />
-    <Content Include="manager\Usuario.aspx" />
+    <Content Include="manager\Noticia.aspx" />
+    <Content Include="manager\NoticiaEditar.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="ctrlMenuNavegacion.ascx" />
+    <Content Include="manager\Usuario.aspx" />
     <Content Include="manager\UsuariosRegistrados.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -195,12 +197,19 @@
     <Compile Include="manager\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manager\Usuario.aspx.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
+    <Compile Include="manager\Noticia.aspx.cs">
+      <DependentUpon>Noticia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manager\Usuario.aspx.designer.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
+    <Compile Include="manager\Noticia.aspx.designer.cs">
+      <DependentUpon>Noticia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manager\NoticiaEditar.aspx.cs">
+      <DependentUpon>NoticiaEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manager\NoticiaEditar.aspx.designer.cs">
+      <DependentUpon>NoticiaEditar.aspx</DependentUpon>
     </Compile>
     <Compile Include="ctrlMenuNavegacion.ascx.cs">
       <DependentUpon>ctrlMenuNavegacion.ascx</DependentUpon>
@@ -208,6 +217,13 @@
     </Compile>
     <Compile Include="ctrlMenuNavegacion.ascx.designer.cs">
       <DependentUpon>ctrlMenuNavegacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="manager\Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manager\Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager\UsuariosRegistrados.aspx.cs">
       <DependentUpon>UsuariosRegistrados.aspx</DependentUpon>

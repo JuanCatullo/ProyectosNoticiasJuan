@@ -150,7 +150,7 @@ namespace ProyectosNoticiasJuan.manager
 
             if (sRet == "")
             {
-                RadioButtonList.DataValueField = "id";
+                RadioButtonList1.DataValueField = "id";
                 RadioButtonList1.DataTextField = "descripcion";
                 RadioButtonList1.DataSource = dt;
                 RadioButtonList1.DataBind();

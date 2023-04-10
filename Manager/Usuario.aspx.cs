@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
-namespace ProyectosNoticiasJuan.Manager
+namespace ProyectosNoticiasJuan.manager
 {
     public partial class Usuario : System.Web.UI.Page
     {
@@ -150,7 +150,7 @@ namespace ProyectosNoticiasJuan.Manager
 
             if (sRet == "")
             {
-                miRadioButtonList.DataValueField = "id";
+                RadioButtonList.DataValueField = "id";
                 RadioButtonList1.DataTextField = "descripcion";
                 RadioButtonList1.DataSource = dt;
                 RadioButtonList1.DataBind();

@@ -31,11 +31,13 @@ namespace ProyectosNoticiasJuan.manager
             {
                 gvUsuarios.DataSource = dt;
                 gvUsuarios.DataBind();
+
             }
             else
             {
-                Utils.ShowAlertAjax(this.Page, sRet, "");
+                Utilidades.Utils.ShowAlertAjax(this.Page, sRet, "");
             }
+
         }
         protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {

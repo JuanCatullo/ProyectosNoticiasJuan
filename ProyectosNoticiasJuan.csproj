@@ -160,6 +160,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="uploads\UploadFoto.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -239,6 +240,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="uploads\UploadFoto.aspx.cs">
+      <DependentUpon>UploadFoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploads\UploadFoto.aspx.designer.cs">
+      <DependentUpon>UploadFoto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Datos.cs" />
     <Compile Include="Utilidades\Utils.cs" />

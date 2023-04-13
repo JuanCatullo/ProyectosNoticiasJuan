@@ -33,7 +33,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 return ex.Message;
             }
         }
-        public static string ObtenerUsuariosRegistrados(int iId, ref DataTable dt)
+        public static string ObtenerUsuariosRegistrados(ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
@@ -44,9 +44,32 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyDataAdapter = new SqlDataAdapter("spObtenerUsuariosRegistrados", MyConnection);
                 MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+        public static string ObtenerUsuarioRegistrado(int iId, ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerUsuarioRegistrado", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
 
                 MyDataAdapter.SelectCommand.Parameters.Add("@usuario_id", SqlDbType.Int);
                 MyDataAdapter.SelectCommand.Parameters["@usuario_id"].Value = iId;
+
 
                 dt = new DataTable();
                 MyDataAdapter.Fill(dt);
@@ -213,7 +236,7 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
+        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria, string SFoto)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -237,6 +260,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
                 MyCommand.Parameters.AddWithValue("@activo", sActivo);
                 MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
+                MyCommand.Parameters.AddWithValue("@foto", SFoto);
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -293,7 +317,7 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        public static string InsertarNoticia(string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
+        public static string InsertarNoticia(string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria, string SFoto)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -317,6 +341,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
                 MyCommand.Parameters.AddWithValue("@activo", sActivo);
                 MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
+                MyCommand.Parameters.AddWithValue("@foto", SFoto);
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -415,6 +440,9 @@ namespace ProyectosNoticiasJuan.Utilidades
                 return ex.Message;
             }
         }
+
+
+
 
     }
 }

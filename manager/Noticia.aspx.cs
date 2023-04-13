@@ -12,6 +12,7 @@ namespace ProyectosNoticiasJuan.Manager
 {
     public partial class Noticias : System.Web.UI.Page
     {
+        String sFolderUploads = "uploads";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -51,7 +52,7 @@ namespace ProyectosNoticiasJuan.Manager
         protected void Btn_Crear(object sender, EventArgs e)
         {
 
-            Response.Redirect("/Manager/NoticiaEditar.aspx");
+            Response.Redirect("/manager/NoticiaEditar.aspx");
 
         }
 
@@ -75,6 +76,70 @@ namespace ProyectosNoticiasJuan.Manager
                     Utils.ShowAlertAjax(this.Page, "Error al buscar " + sRetorno, "");
                 }
             }
+        }
+
+        string SubirFoto(ref string sFileName)
+        {
+
+            string sRet = "";
+
+
+            if (imgFoto.ImageUrl == "")
+            {
+
+                if (FileUpload1.HasFile)
+                {
+                    if (System.IO.Path.GetExtension(FileUpload1.FileName.ToString().ToUpper()) == ".JPG")
+                    {
+
+                        sFileName = System.Guid.NewGuid().ToString() + ".jpg";
+
+                        FileUpload1.PostedFile.SaveAs(HttpContext.Current.Server.MapPath("/") + sFolderUploads + "/" + sFileName);
+
+                        //imgFoto.ImageUrl = "../uploads/" + sFileName;
+                    }
+                    else
+                    {
+                        sRet = "El archivo no es JPG";
+                    }
+                }
+                else
+                {
+                    sRet = "No subiste archivo";
+                }
+
+            }
+            else
+            {
+
+                if (FileUpload1.HasFile)
+                {
+                    if (System.IO.Path.GetExtension(FileUpload1.FileName.ToString().ToUpper()) == ".JPG")
+                    {
+
+                        sFileName = System.Guid.NewGuid().ToString() + ".jpg";
+
+                        FileUpload1.PostedFile.SaveAs(HttpContext.Current.Server.MapPath("/") + sFolderUploads + "/" + sFileName);
+
+                        //imgFoto.ImageUrl = "../uploads/" + sFileName;
+                    }
+                    else
+                    {
+                        sRet = "El archivo no es JPG";
+                    }
+                }
+                else
+                {
+                    sFileName = imgFoto.ImageUrl.ToString().Replace("../uploads/", "").Trim();
+                }
+
+
+            }
+
+
+
+            return sRet;
+
         }
     }
 }

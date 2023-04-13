@@ -7,21 +7,30 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectosNoticiasJuan.Manager
+namespace ProyectosNoticiasJuan.manager
 {
 
 
-    public partial class Noticias
+    public partial class UploadFoto
     {
 
         /// <summary>
-        /// Control gvNoticias.
+        /// Control fFotoNoticia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNoticias;
+        protected global::System.Web.UI.WebControls.FileUpload fFotoNoticia;
+
+        /// <summary>
+        /// Control cmdUpload.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdUpload;
 
         /// <summary>
         /// Control imgFoto.
@@ -31,23 +40,5 @@ namespace ProyectosNoticiasJuan.Manager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgFoto;
-
-        /// <summary>
-        /// Control FileUpload1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-
-        /// <summary>
-        /// Control cmdCrearNoticia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdCrearNoticia;
     }
 }

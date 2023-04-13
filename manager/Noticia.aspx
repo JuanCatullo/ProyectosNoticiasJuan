@@ -28,6 +28,39 @@
                
            </asp:GridView>
             <br />
+
+             <br />
+
+   <div class="row">
+        <div class="col-md-4">
+
+            <asp:Image ID="imgFoto" runat="server" Width="200" />
+        
+        </div>
+
+    </div>
+
+     <br /> <br />
+
+    <div class="row">
+              <div class="col-md-8">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label">Imagen</label>
+                  <div class="col-md-8">
+                    <label for="link_attach" class="col-md-8 drop-container">
+                      <span class="drop-title">Arrastrar imagen aquí</span>
+                      o
+                      <asp:FileUpload ID="FileUpload1" runat="server" />
+                    </label>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+    <br />
             <ItemTemplate>
                          <asp:Button ID="cmdCrearNoticia" runat="server" Text="Crear Noticia" CommandName="CREAR" CommandArgument='<%#Eval("id") %>' OnClick="Btn_Crear" />
                      </ItemTemplate>

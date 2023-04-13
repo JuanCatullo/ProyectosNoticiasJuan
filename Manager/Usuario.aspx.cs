@@ -51,7 +51,7 @@ namespace ProyectosNoticiasJuan.manager
 
             string sRet = "";
             DataTable dt = new DataTable();
-            sRet = Datos.ObtenerUsuariosRegistrados(iId, ref dt);
+            sRet = Datos.ObtenerUsuariosRegistrados(ref dt);
 
             if (dt.Rows.Count == 1)
             {
@@ -116,7 +116,7 @@ namespace ProyectosNoticiasJuan.manager
             }
             else
             {
-                Utilidades.Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
+                Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
             }
 
         }
@@ -193,7 +193,7 @@ namespace ProyectosNoticiasJuan.manager
             {
 
                 string sRetorno = "";
-                sRetorno = Datos.InsertarUsuario(Convert.ToInt32(ViewState["ID_USUARIO"]), txtNombre.Text.Trim(), txtApellido.Text.Trim(), txtDni.Text.Trim(), txtEmail.Text.Trim(), Convert.ToInt32(ddlPais.SelectedValue), Convert.ToInt32(RadioButtonList1.SelectedValue), Convert.ToDateTime(txtFecha.Text.Trim()), txtOConocimientos.Text.Trim(), txtClave.Text.Trim());
+                sRetorno = Datos.InsertarUsuario(txtNombre.Text.Trim(), txtApellido.Text.Trim(), txtDni.Text.Trim(), txtEmail.Text.Trim(), Convert.ToInt32(ddlPais.SelectedValue), Convert.ToInt32(RadioButtonList1.SelectedValue), Convert.ToDateTime(txtFecha.Text.Trim()), txtOConocimientos.Text.Trim(), txtClave.Text.Trim());
 
                 if (sRetorno == "")
                 {

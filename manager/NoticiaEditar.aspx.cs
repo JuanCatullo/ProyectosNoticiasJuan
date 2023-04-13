@@ -89,6 +89,8 @@ namespace ProyectosNoticiasJuan.Manager
                     categoria.SelectedValue = dt.Rows[0]["Categoria"].ToString().Trim();
                 }
 
+                
+
             }
             else
             {
@@ -148,5 +150,10 @@ namespace ProyectosNoticiasJuan.Manager
             }
 
         }
+
+
+
+        
+
     }
 }

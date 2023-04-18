@@ -11,6 +11,7 @@ namespace ProyectosNoticiasJuan.Manager
 {
     public partial class NoticiaEditar : System.Web.UI.Page
     {
+        String sFolderUploads = "uploads";
         protected void Page_Load(object sender, EventArgs e)
         {
             int iNoticiaId = 0;
@@ -47,7 +48,7 @@ namespace ProyectosNoticiasJuan.Manager
 
             string sRet = "";
             DataTable dt = new DataTable();
-            //sRet = Utilidades.Datos.ObtenerNoticia(iId, ref dt);
+            sRet = Utilidades.Datos.ObtenerNoticia(iId, ref dt);
 
             if (dt.Rows.Count == 1)
             {
@@ -62,11 +63,6 @@ namespace ProyectosNoticiasJuan.Manager
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["texto"])))
                 {
                     txtTexto.Text = dt.Rows[0]["texto"].ToString().Trim();
-                }
-
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["imagen"])))
-                {
-                    txtImagen.Text = dt.Rows[0]["imagen"].ToString().Trim();
                 }
 
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["Orden"])))
@@ -89,43 +85,66 @@ namespace ProyectosNoticiasJuan.Manager
                     categoria.SelectedValue = dt.Rows[0]["Categoria"].ToString().Trim();
                 }
 
-                
+
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["imagen"])))
+                {
+                    imgFoto.ImageUrl = "../uploads/" + dt.Rows[0]["imagen"].ToString().Trim();
+                }
 
             }
-            else
-            {
-                Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
-            }
+            //else
+            //{
+            //    Utilidades.Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
+            //}
 
         }
+
 
         void CargarCategoria()
         {
             string sRet = "";
             DataTable dt = new DataTable();
 
-            //sRet = Utilidades.Datos.ObtenerCategoria(ref dt);
+            sRet = Utilidades.Datos.ObtenerCategoria(ref dt);
 
             if (sRet == "")
             {
                 categoria.DataValueField = "id";
-               categoria.DataTextField = "descripcion";
+                categoria.DataTextField = "descripcion";
                 categoria.DataSource = dt;
                 categoria.DataBind();
             }
 
         }
+
+
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+
+            string sRet = "";
+            string sFileName = "";
+            sRet = SubirFoto(ref sFileName);
+            if (sRet != "")
+            {
+                Utils.ShowAlertAjax(this.Page, sRet, "");
+                return;
+            }
+
+
+
             if (ViewState["MODO"].ToString() == "MODIFICACION")
             {
+
+
+
                 string sRetorno = "";
-                //sRetorno = Datos.ActualizarNoticia(Convert.ToInt32(ViewState["ID_NOTICIA"]), txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(), txtImagen.Text.Trim(), Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()), Convert.ToInt32(categoria.SelectedValue));
+                sRetorno = Datos.ActualizarNoticia(Convert.ToInt32(ViewState["ID_NOTICIA"]), txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(), sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()),1);
 
                 if (sRetorno == "")
                 {
                     Utils.ShowAlertAjax(this.Page, "Noticia actualizada exitosamente", "");
-                    Response.Redirect("Noticias.aspx");
+                    Response.Redirect("Noticia.aspx");
                 }
                 else
                 {
@@ -136,12 +155,12 @@ namespace ProyectosNoticiasJuan.Manager
             {
 
                 string sRetorno = "";
-               // sRetorno = Datos.InsertarNoticia(txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(), txtImagen.Text.Trim(), Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()), Convert.ToInt32(categoria.SelectedValue));
+                sRetorno = Datos.InsertarNoticia(txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(),sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()),1);
 
                 if (sRetorno == "")
                 {
                     Utils.ShowAlertAjax(this.Page, "Noticia agregada exitosamente", "");
-                    Response.Redirect("Noticias.aspx");
+                    Response.Redirect("Noticia.aspx");
                 }
                 else
                 {
@@ -152,8 +171,70 @@ namespace ProyectosNoticiasJuan.Manager
         }
 
 
+        string SubirFoto(ref string sFileName)
+        {
 
-        
+            string sRet = "";
+
+
+            if (imgFoto.ImageUrl == "")
+            {
+
+                if (FileUpload1.HasFile)
+                {
+                    if (System.IO.Path.GetExtension(FileUpload1.FileName.ToString().ToUpper()) == ".JPG")
+                    {
+
+                        sFileName = System.Guid.NewGuid().ToString() + ".jpg";
+
+                        FileUpload1.PostedFile.SaveAs(HttpContext.Current.Server.MapPath("/") + sFolderUploads + "/" + sFileName);
+
+                        //imgFoto.ImageUrl = "../uploads/" + sFileName;
+                    }
+                    else
+                    {
+                        sRet = "El archivo no es JPG";
+                    }
+                }
+                else
+                {
+                    sRet = "No subiste archivo";
+                }
+
+            }
+            else
+            {
+
+                if (FileUpload1.HasFile)
+                {
+                    if (System.IO.Path.GetExtension(FileUpload1.FileName.ToString().ToUpper()) == ".JPG")
+                    {
+
+                        sFileName = System.Guid.NewGuid().ToString() + ".jpg";
+
+                        FileUpload1.PostedFile.SaveAs(HttpContext.Current.Server.MapPath("/") + sFolderUploads + "/" + sFileName);
+
+                        imgFoto.ImageUrl = "../uploads/" + sFileName;
+                    }
+                    else
+                    {
+                        sRet = "El archivo no es JPG";
+                    }
+                }
+                else
+                {
+                    sFileName = imgFoto.ImageUrl.ToString().Replace("../uploads/", "").Trim();
+                }
+
+
+            }
+
+
+
+            return sRet;
+
+        }
+
 
     }
 }

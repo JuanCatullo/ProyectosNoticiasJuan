@@ -105,9 +105,9 @@ namespace ProyectosNoticiasJuan.Utilidades
                 return ex.Message;
             }
         }
-        
 
-        public static string ObtenerNoticias(ref DataTable dt)
+
+       public static string ObtenerNoticias(int iActivoId,int iCategoria, ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
@@ -118,6 +118,12 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyDataAdapter = new SqlDataAdapter("spObtenerNoticias", MyConnection);
                 MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
+
+                MyDataAdapter.SelectCommand.Parameters.Add("@activo", SqlDbType.Int);
+                MyDataAdapter.SelectCommand.Parameters["@activo"].Value = iActivoId;
+
+                MyDataAdapter.SelectCommand.Parameters.Add("@id_categoria", SqlDbType.Int);
+                MyDataAdapter.SelectCommand.Parameters["@id_categoria"].Value = iCategoria;
 
                 dt = new DataTable();
                 MyDataAdapter.Fill(dt);
@@ -236,7 +242,7 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria, string SFoto)
+        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -260,7 +266,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
                 MyCommand.Parameters.AddWithValue("@activo", sActivo);
                 MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
-                MyCommand.Parameters.AddWithValue("@foto", SFoto);
+
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -317,7 +323,7 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        public static string InsertarNoticia(string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria, string SFoto)
+        public static string InsertarNoticia(string sTitulo, string sCopete, string sTexto, string sFoto, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -336,12 +342,11 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@copete", sCopete);
 
                 MyCommand.Parameters.AddWithValue("@texto", sTexto);
-                MyCommand.Parameters.AddWithValue("@imagen", sImagen);
-                MyCommand.Parameters.AddWithValue("@orden", sOrden);
+                MyCommand.Parameters.AddWithValue("@imagen", sFoto);
+                MyCommand.Parameters.AddWithValue("@Orden", sOrden);
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
-                MyCommand.Parameters.AddWithValue("@activo", sActivo);
-                MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
-                MyCommand.Parameters.AddWithValue("@foto", SFoto);
+                MyCommand.Parameters.AddWithValue("@Activo", sActivo);
+                MyCommand.Parameters.AddWithValue("@id_categoria", sCategoria);
 
                 //ACCIONES A MANO
                 MyConnection.Open(); //ABRO CONEXION
@@ -396,7 +401,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand = new SqlCommand("spEliminarNoticia", MyConnection);
                 MyCommand.CommandType = CommandType.StoredProcedure;
 
-                MyCommand.Parameters.AddWithValue("@id", iId);
+                MyCommand.Parameters.AddWithValue("@id_noticia", iId);
 
                 MyConnection.Open();
                 MyCommand.ExecuteNonQuery();
@@ -440,6 +445,28 @@ namespace ProyectosNoticiasJuan.Utilidades
                 return ex.Message;
             }
         }
+
+        public static string ObtenerCategoriasNoticias(ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerCategoriasNoticias", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
 
 
 

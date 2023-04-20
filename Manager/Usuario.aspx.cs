@@ -114,10 +114,10 @@ namespace ProyectosNoticiasJuan.manager
 
 
             }
-            else
-            {
-                Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
-            }
+           // else
+           // {
+           //     Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");
+           // }
 
         }
 

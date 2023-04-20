@@ -51,5 +51,40 @@ namespace ProyectosNoticiasJuan
         {
             CargarNoticias();
         }
+
+
+        public string ImagenNoticia(object imagenDB)
+        {
+            string sRet = "";
+
+            if (imagenDB != null)
+            {
+                sRet = "uploads/" + imagenDB;
+            }
+            else
+            {
+                sRet = "";
+            }
+
+            return sRet;
+        }
+
+
+
+        public string LinkNoticia(object IdNoticia)
+        {
+            string sRet = "";
+
+            if (IdNoticia != null)
+            {
+                sRet = "DetalleNoticia.aspx?id=" + IdNoticia;
+            }
+            else
+            {
+                sRet = "";
+            }
+
+            return sRet;
+        }
     }
 }

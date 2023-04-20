@@ -11,34 +11,25 @@ namespace ProyectosNoticiasJuan
 {
 
 
-    public partial class _Default
+    public partial class DetalleNoticia
     {
 
         /// <summary>
-        /// Control dlCategorias.
+        /// Control lblID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlCategorias;
+        protected global::System.Web.UI.WebControls.Label lblID;
 
         /// <summary>
-        /// Control lblRegistros.
+        /// Control lblTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegistros;
-
-        /// <summary>
-        /// Control gvNoticias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNoticias;
+        protected global::System.Web.UI.WebControls.Label lblTitulo;
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Noticia.aspx.cs" Inherits="ProyectosNoticiasJuan.Manager.Noticias" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Noticias.aspx.cs" Inherits="ProyectosNoticiasJuan.Manager.Noticias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
   <div>
@@ -20,7 +20,7 @@
 
                   <asp:TemplateField HeaderText="Eliminar">
                    <ItemTemplate>
-                         <asp:Button ID="cmdEliminarNoticia" runat="server" Text="Eliminar Noticia" CommandName="ELIMINAR" CommandArgument='<%#Eval("id_noticia") %>' OnClientClick="return confirm('Esta seguro que quiere borrar al usuario');"/>
+                         <asp:Button ID="cmdEliminarNoticia" runat="server" Text="Eliminar Noticia" CommandName="ELIMINAR" CommandArgument='<%#Eval("id_noticia") %>' OnClientClick="return confirm('Esta seguro que quiere borrar la noticia');"/>
                      </ItemTemplate>
                    </asp:TemplateField>
 

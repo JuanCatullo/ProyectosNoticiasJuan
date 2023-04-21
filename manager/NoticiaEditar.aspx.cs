@@ -144,7 +144,7 @@ namespace ProyectosNoticiasJuan.Manager
                 if (sRetorno == "")
                 {
                     Utils.ShowAlertAjax(this.Page, "Noticia actualizada exitosamente", "");
-                    Response.Redirect("Noticia.aspx");
+                    Response.Redirect("Noticias.aspx");
                 }
                 else
                 {
@@ -160,7 +160,7 @@ namespace ProyectosNoticiasJuan.Manager
                 if (sRetorno == "")
                 {
                     Utils.ShowAlertAjax(this.Page, "Noticia agregada exitosamente", "");
-                    Response.Redirect("Noticia.aspx");
+                    Response.Redirect("Noticias.aspx");
                 }
                 else
                 {

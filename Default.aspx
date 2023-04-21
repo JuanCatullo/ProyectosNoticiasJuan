@@ -2,23 +2,27 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <main>
+    <div class="container-fluid">
+
+
         
-        <div class="row col-md-4">
+        <div class="row col-md-3">
             <asp:DropDownList CssClass="form-select"  ID="dlCategorias" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlCategorias_SelectedIndexChanged"></asp:DropDownList>
-           
-           
+        
         </div>
 
         <br />
-        <br />
+       
 
+        <div class="row col-md-4">
         <asp:Label ID="lblRegistros" runat="server" Text=""></asp:Label>
-        
+        </div>
         <br />
 
         <div class="row">
-            <asp:GridView ID="gvNoticias" CssClass="table" runat="server" AutoGenerateColumns="False" EmptyDataText="No se encontraron registros">
+
+            <div class="table-responsive">
+            <asp:GridView ID="gvNoticias" CssClass="table table-striped table-hover table-bordered table-sm" runat="server" AutoGenerateColumns="False" EmptyDataText="No se encontraron registros">
                 <Columns>
 
 
@@ -44,7 +48,7 @@
 
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# LinkNoticia(Eval("id")) %>' Text="Ir a la Noticia"></asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# LinkNoticia(Eval("id_noticia")) %>' Text="Ir a la Noticia"></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -52,8 +56,15 @@
                 </Columns>
                 
             </asp:GridView>
-        </div>
-    </main>
+            </div>
 
-</asp:Content> 
-    
+
+        </div>
+
+
+
+
+
+    </div>
+
+</asp:Content>

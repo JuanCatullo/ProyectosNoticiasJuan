@@ -47,6 +47,7 @@ namespace ProyectosNoticiasJuan
             dlCategorias.DataBind();
         }
 
+
         protected void dlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarNoticias();

@@ -12,7 +12,6 @@ namespace ProyectosNoticiasJuan
     
     public partial class DetalleNoticia : System.Web.UI.Page
     {
-        
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadUI();
@@ -20,11 +19,7 @@ namespace ProyectosNoticiasJuan
 
         void LoadUI()
         {
-         //  lblID.Text = Request.QueryString["id"].ToString();
-
-         //  CargarNoticia(int.Parse(Request.QueryString["id"].ToString()));
-
-
+          CargarNoticia(int.Parse(Request.QueryString["id"].ToString()));
         }
 
 
@@ -34,11 +29,27 @@ namespace ProyectosNoticiasJuan
             {
                 string sRet = "";
                 DataTable dt = new DataTable();
-                sRet = Utilidades.Datos.ObtenerNoticia(iId, ref dt);
+                sRet = Datos.ObtenerNoticia(iId, ref dt);
 
                 if (dt.Rows.Count == 1)
                 {
+
                     lblTitulo.Text = dt.Rows[0]["titulo"].ToString();
+
+                    if (!string.IsNullOrEmpty(dt.Rows[0]["imagen"].ToString()))
+                    {
+                        imgNoticia.ImageUrl = "uploads/" + dt.Rows[0]["imagen"].ToString();
+                        imgNoticia.Visible = true;
+                    }
+                    else
+                    {
+                        imgNoticia.Visible = false;
+                    }
+
+                    lblCopete.Text = dt.Rows[0]["copete"].ToString();
+
+                   
+
                 }
 
 
@@ -55,3 +66,4 @@ namespace ProyectosNoticiasJuan
 
     }
 }
+    

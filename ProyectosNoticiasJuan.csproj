@@ -129,7 +129,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="manager\Login.aspx" />
-    <Content Include="manager\Noticia.aspx" />
+    <Content Include="manager\Noticias.aspx" />
     <Content Include="manager\NoticiaEditar.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -235,12 +235,12 @@
     <Compile Include="manager\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="manager\Noticia.aspx.cs">
-      <DependentUpon>Noticia.aspx</DependentUpon>
+    <Compile Include="manager\Noticias.aspx.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="manager\Noticia.aspx.designer.cs">
-      <DependentUpon>Noticia.aspx</DependentUpon>
+    <Compile Include="manager\Noticias.aspx.designer.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager\NoticiaEditar.aspx.cs">
       <DependentUpon>NoticiaEditar.aspx</DependentUpon>

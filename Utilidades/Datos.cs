@@ -122,8 +122,8 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyDataAdapter.SelectCommand.Parameters.Add("@activo", SqlDbType.Int);
                 MyDataAdapter.SelectCommand.Parameters["@activo"].Value = iActivoId;
 
-                MyDataAdapter.SelectCommand.Parameters.Add("@id_categoria", SqlDbType.Int);
-                MyDataAdapter.SelectCommand.Parameters["@id_categoria"].Value = iCategoria;
+                MyDataAdapter.SelectCommand.Parameters.Add("@categoria_id", SqlDbType.Int);
+                MyDataAdapter.SelectCommand.Parameters["@categoria_id"].Value = iCategoria;
 
                 dt = new DataTable();
                 MyDataAdapter.Fill(dt);
@@ -265,7 +265,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@orden", sOrden);
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
                 MyCommand.Parameters.AddWithValue("@activo", sActivo);
-                MyCommand.Parameters.AddWithValue("@categoria", sCategoria);
+                MyCommand.Parameters.AddWithValue("@id_categoria", sCategoria);
 
 
                 //ACCIONES A MANO

@@ -37,6 +37,10 @@ namespace ProyectosNoticiasJuan.Manager
                     ViewState["MODO"] = "ALTA";
                 }
 
+                
+            
+
+
             }
 
 
@@ -75,14 +79,14 @@ namespace ProyectosNoticiasJuan.Manager
                     txtFecha.Text = dt.Rows[0]["Fecha"].ToString().Trim();
                 }
 
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["Activo"])))
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["Activa"])))
                 {
-                    txtActivo.Text = dt.Rows[0]["Activo"].ToString().Trim();
+                    txtActivo.Text = dt.Rows[0]["Activa"].ToString().Trim();
                 }
 
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["Categoria"])))
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["id_categoria"])))
                 {
-                    categoria.SelectedValue = dt.Rows[0]["Categoria"].ToString().Trim();
+                    categoria.SelectedValue = dt.Rows[0]["id_categoria"].ToString().Trim();
                 }
 
 
@@ -92,6 +96,8 @@ namespace ProyectosNoticiasJuan.Manager
                 }
 
             }
+
+
             //else
             //{
             //    Utilidades.Utils.ShowAlertAjax(this.Page, "No se encontro el usuario", "");

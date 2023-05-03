@@ -41,10 +41,7 @@
               <asp:TextBox ID="txtTexto" class="form-control" placeholder="Texto" runat="server"></asp:TextBox>
               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Falta Texto"  ControlToValidate="txtTexto" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
          </div>
-      <div class="form-group">
-              <asp:TextBox ID="txtImagen" class="form-control" placeholder="Imagen" runat="server"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Falta Imagen"  ControlToValidate="txtImagen" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
-      </div>
+     
       <div class="form-group">
             <asp:TextBox ID="txtOrden" Cssclass="form-control" placeholder="Orden" runat="server"></asp:TextBox>
              <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Falta Orden"  ControlToValidate="txtOrden" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
@@ -58,9 +55,9 @@
              <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Falta Activacion"  ControlToValidate="txtActivo" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
         </div>
        <div class="form-group">
-    <asp:DropDownList ID="categoria" cssClass="form-control" runat="server">
+    <asp:DropDownList 
+        ID="categoria" cssClass="form-control" runat="server">
        
-
     </asp:DropDownList>
            <div>
            <asp:Image ID="imgFoto" runat="server" />
@@ -106,4 +103,5 @@
    </div>
     </div>
 
+        </div>
 </asp:Content>

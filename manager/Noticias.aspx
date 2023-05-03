@@ -5,9 +5,13 @@
        <div>
            <asp:GridView ID="gvNoticias" runat="server" AutoGenerateColumns="False" OnRowCommand="gvNoticias_RowCommand">
                <Columns>
+                   
                    <asp:BoundField DataField="id_noticia" HeaderText="ID" />
+                   
                    <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
+                   
                    <asp:BoundField DataField="id_categoria" HeaderText="Categoria" />
+                   
                    <asp:BoundField DataField="activa" HeaderText="Activo" />
 
 

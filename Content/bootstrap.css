@@ -77,7 +77,11 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    background-color: #FFFFFF;
+    background: #C0C0C0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -115,9 +119,11 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
+    border-color: #000000;
+    border: #000000;
     font-size: 16px;
-    background-color: #FFFFFF;
-    color: #0000FF;
+    background-color: #C0C0C0;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
 @media (min-width: 1200px) {
@@ -136,7 +142,12 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: calc(1.3rem + 0.6vw);
+    font-size: 16px;
+    background-color: #C0C0C0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    max-width: 600px;
+    min-width: 300px;
 }
 @media (min-width: 1200px) {
   h3, .h3 {
@@ -307,8 +318,19 @@ svg {
 }
 
 table {
-  caption-side: bottom;
-  border-collapse: collapse;
+    border-top-color: #000000;
+    border: 1px #000000 solid;
+    border-color: #000000;
+    caption-side: bottom;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    max-width: 600px;
+    min-width: 300px;
+    letter-spacing: 1px;
+    display: table;
+    table-layout: fixed;
 }
 
 caption {
@@ -1741,21 +1763,29 @@ progress {
   }
 }
 .table {
-  --bs-table-color: var(--bs-body-color);
-  --bs-table-bg: transparent;
-  --bs-table-border-color: var(--bs-border-color);
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: var(--bs-body-color);
-  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-  --bs-table-active-color: var(--bs-body-color);
-  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: var(--bs-body-color);
-  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-  width: 100%;
-  margin-bottom: 1rem;
-  color: var(--bs-table-color);
-  vertical-align: top;
-  border-color: var(--bs-table-border-color);
+    background: #0000FF;
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--bs-border-color);
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-body-color);
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: var(--bs-body-color);
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: var(--bs-body-color);
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--bs-table-color);
+    vertical-align: top;
+    border-color: #000000;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top-color: #000000;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: #000000;
+    letter-spacing: 1px;
 }
 .table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;

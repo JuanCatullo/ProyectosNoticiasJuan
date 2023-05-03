@@ -111,7 +111,7 @@ namespace ProyectosNoticiasJuan.Manager
             string sRet = "";
             DataTable dt = new DataTable();
 
-            sRet = Utilidades.Datos.ObtenerCategoria(ref dt);
+            sRet = Datos.ObtenerCategoria(ref dt);
 
             if (sRet == "")
             {

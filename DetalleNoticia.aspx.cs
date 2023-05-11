@@ -47,8 +47,9 @@ namespace ProyectosNoticiasJuan
                     }
 
                     lblCopete.Text = dt.Rows[0]["copete"].ToString();
+                    lblTitulo.Text = dt.Rows[0]["texto"].ToString();
 
-                   
+
 
                 }
 

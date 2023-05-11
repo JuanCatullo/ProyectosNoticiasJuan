@@ -259,5 +259,42 @@ namespace ProyectosNoticiasJuan.Utilidades
         #endregion
 
 
+
+        #region "Acceso a páginas del manager"
+
+        public static bool TieneAcceso(string sNombrePagina, int iPerfilId)
+        {
+            bool bRet = false;
+
+            switch (sNombrePagina)
+            {
+                //SOLO LOS ADMIN TIENEN ACCESO
+                case "USUARIOS":
+                    if (iPerfilId == 1)
+                    {
+                        bRet = true;
+                    }
+                    else
+                    {
+                        bRet = false;
+                    }
+                    break;
+
+                //TODOS TIENEN ACCESO
+                case "NOTICIAS":
+                    bRet = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return bRet;
+
+        }
+
+        #endregion
+
+
     }
 }

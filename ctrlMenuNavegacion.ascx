@@ -17,10 +17,18 @@
                       
 
           
+                  
+
+          
         <asp:PlaceHolder ID="plcManager" runat="server">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Administración</a>
             <ul class="dropdown-menu">
+
+                 <asp:PlaceHolder ID="plcUsuarios" runat="server">
+                    <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Usuarios">Usuarios</a></li>
+                </asp:PlaceHolder>
+
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Usuario">Crear Usuario</a></li>
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Noticias">Noticias</a></li>
                 <li class="nav-item"><a class="dropdown-item" runat="server" href="~/Default">Noticias cargadas</a></li>
@@ -28,14 +36,14 @@
             </ul>
           </li>
         </asp:PlaceHolder>
+
+              <li>
+                           <asp:LinkButton CssClass="nav-link" ID="lnkSalir" runat="server" OnClick="lnkSalir_Click" OnClientClick="return confirm('Está seguro que desea salir?');">Salir</asp:LinkButton>
+                        </li>
+                      
+
         </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <asp:LinkButton CssClass="nav-link" ID="lnkSalir" runat="server" OnClick="lnkSalir_Click" OnClientClick="return confirm('Está seguro que desea salir?');">Salir</asp:LinkButton>
-                        </li>
-                    </ul>
-        
       </div>
     </div>
   </nav>

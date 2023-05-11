@@ -82,6 +82,7 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+    text-align: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -319,7 +320,7 @@ svg {
 
 table {
     border-top-color: #000000;
-    border: 1px #000000 solid;
+    border: 0px #000000 solid;
     border-color: #000000;
     caption-side: bottom;
     border-collapse: collapse;
@@ -2001,11 +2002,13 @@ progress {
 }
 
 .col-form-label {
-  padding-top: calc(0.375rem + 1px);
-  padding-bottom: calc(0.375rem + 1px);
-  margin-bottom: 0;
-  font-size: inherit;
-  line-height: 1.5;
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+    max-width: 600px;
+    min-width: 400px;
 }
 
 .col-form-label-lg {
@@ -2027,21 +2030,21 @@ progress {
 }
 
 .form-control {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0.375rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0px #ced4da solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {

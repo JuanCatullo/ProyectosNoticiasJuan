@@ -3,7 +3,7 @@
     <br />
   <div>
        <div>
-           <asp:GridView ID="gvNoticias" runat="server" AutoGenerateColumns="False" OnRowCommand="gvNoticias_RowCommand">
+                     <asp:GridView cssClass="table-bordered text-center" ID="gvNoticias" runat="server" AutoGenerateColumns="False" OnRowCommand="gvNoticias_RowCommand">
                <Columns>
                    
                    <asp:BoundField DataField="id_noticia" HeaderText="ID" />

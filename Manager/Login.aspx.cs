@@ -18,10 +18,7 @@ namespace ProyectosNoticiasJuan.Manager
 
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
-
-			
-
-			string sRet = "";
+            string sRet = "";
             sRet = ValidarForm();
 
             DataTable dt = new DataTable();
@@ -36,30 +33,41 @@ namespace ProyectosNoticiasJuan.Manager
                 {
 
                     //GUARDO EN SESSION LOS DATOS QUE QUIERO USAR
-                    Session["USUARIO_ID"] = dt.Rows[0]["id"].ToString();
-                    Session["USUARIO_NOMBRE"] = dt.Rows[0]["apellido"].ToString() + ", " + dt.Rows[0]["nombre"].ToString();
+                    //Session["USUARIO_ID"] = dt.Rows[0]["id"].ToString();
+                    //Session["USUARIO_NOMBRE"] = dt.Rows[0]["apellido"].ToString() + ", " + dt.Rows[0]["nombre"].ToString();
+
+
+                    Clases.Usuario UsuarioLogueado = new Clases.Usuario();
+                    UsuarioLogueado.UsuarioID = int.Parse(dt.Rows[0]["id"].ToString());
+                    UsuarioLogueado.Nombre = dt.Rows[0]["nombre"].ToString();
+                    UsuarioLogueado.Apellido = dt.Rows[0]["apellido"].ToString();
+                  //  UsuarioLogueado.PerfilID = int.Parse(dt.Rows[0]["perfil_id"].ToString());
+                  //  UsuarioLogueado.PerfilDescripcion = dt.Rows[0]["perfil"].ToString();
+
+                    Session["USUARIO"] = UsuarioLogueado;
+
+
 
                     //SETEO LA COOKIE DE AUTENTICACION Y DESPUES REDIRIJO A LA HOME DEL MANAGER
                     System.Web.Security.FormsAuthentication.SetAuthCookie(txtUsuario.Text.Trim(), true);
-                    Response.Redirect("/Manager/Noticias.aspx");
+                    Response.Redirect("/Default.aspx");
 
-
-                    //Utilidades.Utils.ShowAlertAjax(this.Page, "Usuario: " + dt.Rows[0]["email"].ToString(), "");
                 }
                 else
                 {
-                    Utils.ShowAlertAjax(this.Page, "Usuario y clave no coinciden.", "");
+                    Utilidades.Utils.ShowAlertAjax(this.Page, "Usuario y clave no coinciden.", "");
                 }
 
             }
             else
             {
-                Utils.ShowAlertAjax(this.Page, sRet, "");
+                Utilidades.Utils.ShowAlertAjax(this.Page, sRet, "");
             }
 
 
 
         }
+
 
         string ValidarForm()
         {

@@ -15,13 +15,13 @@ namespace ProyectosNoticiasJuan
     {
 
         /// <summary>
-        /// Control MenuNavegacion.
+        /// Control ctrlNavegacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UserControl MenuNavegacion;
+        protected global::ProyectosNoticiasJuan.ctrlMenuNavegacion ctrlNavegacion;
 
         /// <summary>
         /// Control MainContent.
@@ -40,5 +40,14 @@ namespace ProyectosNoticiasJuan
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUsuario;
+
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

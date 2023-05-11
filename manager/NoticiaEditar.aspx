@@ -87,7 +87,7 @@
            <asp:Label ID="Label1" runat="server" CssClass="text-center center-block" ></asp:Label>
             <div class="btn-group" role="group">
 
-                <asp:Button ID="Button1" type="submit" Cssclass="btn btn-default center-block" role="group" runat="server" Text="Enviar"  OnClick="Button1_Click"  />
+                <asp:Button ID="Button1" type="submit" Cssclass="btn btn-default center-block " role="group" runat="server" Text="Enviar"  OnClick="Button1_Click"  />
 
                 <asp:Button ID="Button2" type="submit" Cssclass="btn btn-default center-block" role="group" runat="server" Text="Cancelar" />
             </div>

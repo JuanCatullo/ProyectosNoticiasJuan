@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectosNoticiasJuan.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,16 +13,31 @@ namespace ProyectosNoticiasJuan
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USUARIO_NOMBRE"] != null)
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
-
                 plcManager.Visible = true;
+                lnkSalir.Visible = true;
+
+                if (Session["USUARIO"] != null)
+                {
+                    Clases.Usuario UsuarioActual = (Clases.Usuario)Session["USUARIO"];
+
+                    if (Utils.TieneAcceso("USUARIOS", UsuarioActual.PerfilID) == false)
+                    {
+                        plcUsuarios.Visible = false;
+                    }
+
+
+                }
+
 
             }
             else
             {
 
                 plcManager.Visible = false;
+                lnkSalir.Visible = false;
+
             }
 
         }

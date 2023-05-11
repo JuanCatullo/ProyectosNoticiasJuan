@@ -15,8 +15,21 @@ namespace ProyectosNoticiasJuan.Manager
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Write(HttpContext.Current.Request.Url.AbsolutePath.ToString());
 
-            if (!string.IsNullOrEmpty(Request.QueryString["usuario_id"]))
+            if (Session["USUARIO"] != null)
+            {
+                Clases.Usuario UsuarioActual = (Clases.Usuario)Session["USUARIO"];
+
+                if (Utils.TieneAcceso("NOTICIAS", UsuarioActual.PerfilID) == false)
+                {
+                    Utils.ShowAlertAjax(this.Page, "No tiene permisos para ver esta página", "/Default.aspx");
+                    return;
+                }
+
+            }
+
+                if (!string.IsNullOrEmpty(Request.QueryString["usuario_id"]))
             {
 
             }

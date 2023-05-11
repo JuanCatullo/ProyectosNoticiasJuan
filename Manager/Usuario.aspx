@@ -84,13 +84,13 @@
 
 
        <div class="form-group">
-               <asp:TextBox ID="txtClave" Cssclass="form-control" placeholder="Clave" runat="server"></asp:TextBox>
+               <asp:TextBox ID="txtClave" Cssclass="form-control" TextMode="Password" placeholder="Clave" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Falta Password"  ControlToValidate="txtClave" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
        </div>    
 
 
        <div class="form-group">
-           <asp:TextBox ID="txtClave1" Cssclass="form-control" placeholder="Repetir Clave" runat="server"></asp:TextBox>
+           <asp:TextBox ID="txtClave1" Cssclass="form-control" TextMode="Password" placeholder="Repetir Clave" runat="server"></asp:TextBox>
            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Verifique la password"  ControlToValidate="txtClave1" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
 
        </div> 

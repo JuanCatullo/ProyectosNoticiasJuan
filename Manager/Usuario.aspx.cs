@@ -105,11 +105,7 @@ namespace ProyectosNoticiasJuan.manager
                 {
                     txtClave.Text = dt.Rows[0]["contraseña"].ToString().Trim();
                 }
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["contraseña"])))
-                {
-                    txtClave1.Text = dt.Rows[0]["contraseña"].ToString().Trim();
-                }
-
+             
                 
 
 
@@ -177,7 +173,7 @@ namespace ProyectosNoticiasJuan.manager
             if (ViewState["MODO"].ToString() == "MODIFICACION")
             {
                 string sRetorno = "";
-                sRetorno = Utilidades.Datos.ActualizarUsuario(Convert.ToInt32(ViewState["ID_USUARIO"]), txtNombre.Text.Trim(), txtApellido.Text.Trim(), txtDni.Text.Trim(), txtEmail.Text.Trim(), Convert.ToInt32(ddlPais.SelectedValue), Convert.ToInt32(RadioButtonList1.SelectedValue), Convert.ToDateTime(txtFecha.Text.Trim()), txtOConocimientos.Text.Trim(), txtClave.Text.Trim());
+                sRetorno = Datos.ActualizarUsuario(Convert.ToInt32(ViewState["ID_USUARIO"]), txtNombre.Text.Trim(), txtApellido.Text.Trim(), txtDni.Text.Trim(), txtEmail.Text.Trim(), Convert.ToInt32(ddlPais.SelectedValue), Convert.ToInt32(RadioButtonList1.SelectedValue), Convert.ToDateTime(txtFecha.Text.Trim()), txtOConocimientos.Text.Trim(), txtClave.Text.Trim());
 
                 if (sRetorno == "")
                 {

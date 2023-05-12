@@ -43,10 +43,10 @@
 
 
        <div class="form-group">
-    <asp:DropDownList ID="ddlPais" cssClass="form-control" runat="server">
-       
-
-    </asp:DropDownList>
+      <asp:DropDownList ID="ddlPais" runat="server" ValidationGroup="Registro" >
+                      
+                       
+                   </asp:DropDownList>
         </div>
 
 

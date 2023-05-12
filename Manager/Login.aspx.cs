@@ -33,18 +33,18 @@ namespace ProyectosNoticiasJuan.Manager
                 {
 
                     //GUARDO EN SESSION LOS DATOS QUE QUIERO USAR
-                    //Session["USUARIO_ID"] = dt.Rows[0]["id"].ToString();
-                    //Session["USUARIO_NOMBRE"] = dt.Rows[0]["apellido"].ToString() + ", " + dt.Rows[0]["nombre"].ToString();
+                    //  Session["USUARIO_ID"] = dt.Rows[0]["id"].ToString();
+                    //  Session["USUARIO_NOMBRE"] = dt.Rows[0]["apellido"].ToString() + ", " + dt.Rows[0]["nombre"].ToString();
 
 
                     Clases.Usuario UsuarioLogueado = new Clases.Usuario();
                     UsuarioLogueado.UsuarioID = int.Parse(dt.Rows[0]["id"].ToString());
                     UsuarioLogueado.Nombre = dt.Rows[0]["nombre"].ToString();
                     UsuarioLogueado.Apellido = dt.Rows[0]["apellido"].ToString();
-                  //  UsuarioLogueado.PerfilID = int.Parse(dt.Rows[0]["perfil_id"].ToString());
-                  //  UsuarioLogueado.PerfilDescripcion = dt.Rows[0]["perfil"].ToString();
 
                     Session["USUARIO"] = UsuarioLogueado;
+
+                 
 
 
 

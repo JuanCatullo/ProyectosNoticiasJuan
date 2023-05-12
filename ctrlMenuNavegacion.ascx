@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ctrlMenuNavegacion.ascx.cs" Inherits="ProyectosNoticiasJuan.ctrlMenuNavegacion" %>
 
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="">
+<nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Proyecto Noticias</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+     <a class="navbar-brand" href="#">Proyecto Noticias</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -26,13 +26,13 @@
             <ul class="dropdown-menu">
 
                  <asp:PlaceHolder ID="plcUsuarios" runat="server">
-                    <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Usuarios">Usuarios</a></li>
+                    <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/UsuariosRegistrados">Usuarios</a></li>
                 </asp:PlaceHolder>
 
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Usuario">Crear Usuario</a></li>
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Noticias">Noticias</a></li>
                 <li class="nav-item"><a class="dropdown-item" runat="server" href="~/Default">Noticias cargadas</a></li>
-                   <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/UsuariosRegistrados">Usuarios cargados</a></li>
+              <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/UsuariosRegistrados"> Usuarios Cargados</a></li>
             </ul>
           </li>
         </asp:PlaceHolder>

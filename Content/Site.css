@@ -4,6 +4,8 @@
     padding-right: 15px;
 }
 
+
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -67,14 +69,13 @@ html {
 }
 
 .container-fluid {
-    background: linear-gradient(to right, #D3D3D3, #ADD8E6) /* Cambie este valor al color deseado */
+    background: linear-gradient(to right, #00008B, #ADD8E6) /* Cambie este valor al color deseado */;
+    max-width: 600px;
+    min-height: 300px;
 }
 
-.navbar navbar-expand-sm navbar-dark bg-dark {
-    background: linear-gradient(to right, #D3D3D3, #ADD8E6)
+.navbar navbar-expand-sm navbar-light bg-light {
+    background: linear-gradient(to right, #00008B, #ADD8E6)
 }
 
-.navbar-custom {
-    background-color: #000000; /* color black barra navegacion */
-}
 

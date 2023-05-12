@@ -43,7 +43,9 @@
 
         <%--NAVEGACION--%>
         
-        <uc1:ctrlNavegacion runat="server" id="ctrlNavegacion" />
+        <uc1:ctrlNavegacion runat="server" id="ctrlMenuNavegacion" />
+
+       
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
@@ -52,7 +54,7 @@
             <footer>
                 <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
                 <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
-                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                
             </footer>
         </div>
     </form>

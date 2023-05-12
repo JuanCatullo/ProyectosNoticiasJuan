@@ -83,8 +83,10 @@ namespace ProyectosNoticiasJuan.manager
 
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["conocimientos"])))
                 {
-                    CblConocimiento.Text = dt.Rows[0]["conocimientos"].ToString().Trim();
+                    CblConocimiento.SelectedValue = dt.Rows[0]["conocimientos"].ToString().Trim();
                 }
+
+
 
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["email"])))
                 {
@@ -96,9 +98,9 @@ namespace ProyectosNoticiasJuan.manager
                     txtFecha.Text = dt.Rows[0]["fecha_nacimiento"].ToString().Trim();
                 }
 
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["conocimientos"])))
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["otrosconocimientos"])))
                 {
-                    txtOConocimientos.Text = dt.Rows[0]["conocimientos"].ToString().Trim();
+                    txtOConocimientos.Text = dt.Rows[0]["otrosconocimientos"].ToString().Trim();
                 }
 
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["contraseña"])))

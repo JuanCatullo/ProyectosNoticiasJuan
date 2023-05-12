@@ -56,7 +56,7 @@
         </div>
        <div class="form-group">
     <asp:DropDownList 
-        ID="categoria" cssClass="form-control" runat="server">
+        ID="categoria" cssClass="form-control" runat="server" ValidationGroup="Registro">
        
     </asp:DropDownList>
            <div>

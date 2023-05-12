@@ -185,7 +185,7 @@ namespace ProyectosNoticiasJuan.Utilidades
             try
             {
                 MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-                MyDataAdapter = new SqlDataAdapter("spObtenerCategoria", MyConnection);
+                MyDataAdapter = new SqlDataAdapter("spObtenerCategoriaNoticias", MyConnection);
                 MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
@@ -301,10 +301,11 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@apellido", sApellido);
 
                 MyCommand.Parameters.AddWithValue("@dni", sDni);
-                MyCommand.Parameters.AddWithValue("@email", sDdlPais);
-                MyCommand.Parameters.AddWithValue("@id_pais", sEmail);
+                MyCommand.Parameters.AddWithValue("@email", sEmail);
+                MyCommand.Parameters.AddWithValue("@id_pais", sDdlPais);
                 MyCommand.Parameters.AddWithValue("@curso_id", RadioButtonList1);
                 MyCommand.Parameters.AddWithValue("@fecha_nacimiento", sFecha);
+                MyCommand.Parameters.AddWithValue("@conocimientos", sConocimientos);
                 MyCommand.Parameters.AddWithValue("@contraseña", sClave);
                
 

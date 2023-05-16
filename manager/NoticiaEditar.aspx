@@ -41,6 +41,8 @@
               <asp:TextBox ID="txtTexto" class="form-control" placeholder="Texto" runat="server"></asp:TextBox>
               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Falta Texto"  ControlToValidate="txtTexto" Display="Static" SetFocusOnError="True"  CssClass="center-block text-center"></asp:RequiredFieldValidator>
          </div>
+
+
      
       <div class="form-group">
             <asp:TextBox ID="txtOrden" Cssclass="form-control" placeholder="Orden" runat="server"></asp:TextBox>
@@ -59,6 +61,9 @@
         ID="categoria" cssClass="form-control" runat="server" ValidationGroup="Registro">
        
     </asp:DropDownList>
+
+           <br />
+           
            <div>
            <asp:Image ID="imgFoto" runat="server" />
            </div>
@@ -70,7 +75,7 @@
                   <div class="col-md-8">
                     <label for="link_attach" class="col-md-8 drop-container">
                       <span class="drop-title">Arrastrar imagen aquí</span>
-                      o
+                      
                       <asp:FileUpload ID="FileUpload1" runat="server" />
                     </label>
                     

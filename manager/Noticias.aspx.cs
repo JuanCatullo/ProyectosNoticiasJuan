@@ -8,14 +8,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectosNoticiasJuan.Manager
+namespace ProyectosNoticiasJuan.manager
 {
     public partial class Noticias : System.Web.UI.Page
     {
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(HttpContext.Current.Request.Url.AbsolutePath.ToString());
+          //  Response.Write(HttpContext.Current.Request.Url.AbsolutePath.ToString());
 
             if (Session["USUARIO"] != null)
             {

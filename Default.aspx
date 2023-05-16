@@ -32,6 +32,8 @@
                     <asp:BoundField DataField="descripcion" HeaderText="Categoría" />
                     <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:D}" />
                    
+                 
+
 
 
 

@@ -242,7 +242,7 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sImagen, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
+        public static string ActualizarNoticia(int iId, string sTitulo, string sCopete, string sTexto, string sFoto, int sOrden, DateTime sFecha, int sActivo, int sCategoria)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlCommand MyCommand = default(SqlCommand);
@@ -261,7 +261,7 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyCommand.Parameters.AddWithValue("@copete", sCopete);
 
                 MyCommand.Parameters.AddWithValue("@texto", sTexto);
-                MyCommand.Parameters.AddWithValue("@imagen", sImagen);
+                MyCommand.Parameters.AddWithValue("@imagen", sFoto);
                 MyCommand.Parameters.AddWithValue("@orden", sOrden);
                 MyCommand.Parameters.AddWithValue("@fecha", sFecha);
                 MyCommand.Parameters.AddWithValue("@activo", sActivo);

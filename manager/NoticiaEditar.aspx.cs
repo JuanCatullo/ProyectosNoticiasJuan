@@ -84,16 +84,16 @@ namespace ProyectosNoticiasJuan.Manager
                     txtActivo.Text = dt.Rows[0]["Activa"].ToString().Trim();
                 }
 
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["imagen"])))
+                {
+                    imgFoto.ImageUrl = "../uploads/" + dt.Rows[0]["imagen"].ToString().Trim();
+                }
+
                 if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["id_categoria"])))
                 {
                     categoria.SelectedValue = dt.Rows[0]["id_categoria"].ToString().Trim();
                 }
 
-
-                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["imagen"])))
-                {
-                    imgFoto.ImageUrl = "../uploads/" + dt.Rows[0]["imagen"].ToString().Trim();
-                }
 
             }
 
@@ -145,7 +145,7 @@ namespace ProyectosNoticiasJuan.Manager
 
 
                 string sRetorno = "";
-                sRetorno = Datos.ActualizarNoticia(Convert.ToInt32(ViewState["ID_NOTICIA"]), txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(), sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()),1);
+                sRetorno = Datos.ActualizarNoticia(Convert.ToInt32(ViewState["ID_NOTICIA"]), txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(), sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()), Convert.ToInt32(categoria.SelectedValue));
 
                 if (sRetorno == "")
                 {
@@ -161,7 +161,7 @@ namespace ProyectosNoticiasJuan.Manager
             {
 
                 string sRetorno = "";
-                sRetorno = Datos.InsertarNoticia(txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(),sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()),1);
+                sRetorno = Datos.InsertarNoticia(txtNombre.Text.Trim(), txtCopete.Text.Trim(), txtTexto.Text.Trim(),sFileName, Convert.ToInt32(txtOrden.Text.Trim()), Convert.ToDateTime(txtFecha.Text.Trim()), Convert.ToInt32(txtActivo.Text.Trim()), Convert.ToInt32(categoria.SelectedValue));
 
                 if (sRetorno == "")
                 {
@@ -175,6 +175,8 @@ namespace ProyectosNoticiasJuan.Manager
             }
 
         }
+
+     
 
 
         string SubirFoto(ref string sFileName)

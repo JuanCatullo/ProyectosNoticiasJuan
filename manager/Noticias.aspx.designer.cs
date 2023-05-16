@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectosNoticiasJuan.Manager
+namespace ProyectosNoticiasJuan.manager
 {
 
 

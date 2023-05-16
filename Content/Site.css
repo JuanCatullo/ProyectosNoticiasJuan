@@ -70,8 +70,6 @@ html {
 
 .container-fluid {
     background: linear-gradient(to right, #00008B, #ADD8E6) /* Cambie este valor al color deseado */;
-    max-width: 600px;
-    min-height: 300px;
 }
 
 .navbar navbar-expand-sm navbar-light bg-light {

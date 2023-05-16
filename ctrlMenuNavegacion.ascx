@@ -30,7 +30,7 @@
                 </asp:PlaceHolder>
 
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Usuario">Crear Usuario</a></li>
-              <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Noticias">Noticias</a></li>
+              <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/Noticias">Editar Noticias</a></li>
                 <li class="nav-item"><a class="dropdown-item" runat="server" href="~/Default">Noticias cargadas</a></li>
               <li class="nav-item"><a class="dropdown-item" runat="server" href="~/manager/UsuariosRegistrados"> Usuarios Cargados</a></li>
             </ul>

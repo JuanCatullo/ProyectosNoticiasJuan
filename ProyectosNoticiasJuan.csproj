@@ -131,6 +131,7 @@
     <Content Include="manager\Login.aspx" />
     <Content Include="manager\Noticias.aspx" />
     <Content Include="manager\NoticiaEditar.aspx" />
+    <Content Include="RecordatorioClave.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -159,6 +160,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="WebServiceNoticias.asmx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="ctrlMenuNavegacion.ascx" />
     <Content Include="manager\Usuario.aspx" />
@@ -271,7 +273,15 @@
     <Compile Include="manager\UsuariosRegistrados.aspx.designer.cs">
       <DependentUpon>UsuariosRegistrados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Noticia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordatorioClave.aspx.cs">
+      <DependentUpon>RecordatorioClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecordatorioClave.aspx.designer.cs">
+      <DependentUpon>RecordatorioClave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -288,6 +298,10 @@
     </Compile>
     <Compile Include="Utilidades\Datos.cs" />
     <Compile Include="Utilidades\Utils.cs" />
+    <Compile Include="WebServiceNoticias.asmx.cs">
+      <DependentUpon>WebServiceNoticias.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

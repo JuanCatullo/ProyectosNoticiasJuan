@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -270,7 +271,8 @@ namespace ProyectosNoticiasJuan.Utilidades
             {
                 //SOLO LOS ADMIN TIENEN ACCESO
                 case "USUARIOS":
-                    if (iPerfilId == 1)
+
+                    if (iPerfilId == 1 || iPerfilId == 3)
                     {
                         bRet = true;
                     }
@@ -293,8 +295,124 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
 
-        #endregion
+            static public bool SendMail(string sTOEmail, string sFROMEmail, string sCCEmail, string sBCCEmail, string sSubjectEmail, string sTxtBodyEmail, System.Net.Mail.MailPriority oPriority, string sDisPlayName, ref string sMessageError)
+            {
+                try
+                {
+                    // Armo el Body y lo agrego
+                    System.Text.StringBuilder sHtmlMailContent = new System.Text.StringBuilder("");
+                    sHtmlMailContent.Append(sTxtBodyEmail);
+
+                    // Subject
+                    string sSubject;
+                    sSubject = sSubjectEmail.ToString();
+
+                    // TO
+                    string sTO = "";
+                    if ((sTOEmail == ""))
+                    {
+                        sTO = ConfigurationManager.AppSettings["TO_MAIL"];
+                    }
+                    else
+                    {
+                        sTO = sTOEmail;
+
+                    }
+
+                    string sCC = "";
+                    if ((sCCEmail == ""))
+                    {
+                        sCC = ConfigurationManager.AppSettings["CC_MAIL"];
+                    }
+                    else
+                    {
+                        sCC = sCCEmail;
+                    }
+
+                    // BCC
+                    string sBCC;
+                    if ((sBCCEmail == ""))
+                    {
+                        sBCC = ConfigurationManager.AppSettings["BCC_MAIL"];
+                    }
+                    else
+                    {
+                        sBCC = sBCCEmail;
+                    }
+
+                    string sFrom;
+                    sFrom = sFROMEmail.ToString();
+                    if (sFrom.Equals(""))
+                    {
+                        sFrom = ConfigurationManager.AppSettings["FROM_MAIL"];
+                    }
+
+                    System.Net.Mail.MailMessage msgMail = new System.Net.Mail.MailMessage();
+
+                    System.Net.Mail.MailAddress oFrom = new System.Net.Mail.MailAddress(sFrom.ToString(), sDisPlayName.ToString());
+                    msgMail.From = oFrom;
+
+                    msgMail.Subject = sSubject;
+
+                    // EN EL TO ADMITO LISTA CON ;
+                    if (!sTO.Equals(""))
+                    {
+                        msgMail.To.Add(new System.Net.Mail.MailAddress(sTO.ToString()));
+
+                    }
+
+                    if (!sBCC.Equals(""))
+                    {
+                        System.Net.Mail.MailAddress bcopy = (new System.Net.Mail.MailAddress(sBCC.ToString()));
+                    }
 
 
+                    if ((msgMail.IsBodyHtml == true))
+                    {
+                        msgMail.Body = sHtmlMailContent.ToString().Replace("\r\n", "<br>");
+                    }
+                    else
+                    {
+                        msgMail.Body = sHtmlMailContent.ToString();
+                    }
+
+
+                    System.Net.Mail.SmtpClient mailSMTP = new System.Net.Mail.SmtpClient();
+
+                    //zerezqustporjyac
+                    mailSMTP.Host = "smtp.gmail.com";
+                    mailSMTP.Port = 587;
+                    mailSMTP.EnableSsl = true;
+
+                    mailSMTP.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["SMTP_USER"].ToString(), ConfigurationManager.AppSettings["SMTP_CLAVE"].ToString());
+
+
+                    {
+                        var withBlock = mailSMTP;
+                        withBlock.Send(msgMail);
+                    }
+
+                    sMessageError = "";
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    // LOOPEAR CON INNEREXCEPTION
+                    string msg = "";
+                    msg = (ex.ToString() + "<br />");
+                    while (!(ex.InnerException == null))
+                    {
+                        msg = (ex.InnerException.ToString() + "<br />");
+                        ex = ex.InnerException;
+                    }
+
+                    sMessageError = ("Error enviando email: " + msg);
+                    return false;
+                }
+
+            }
+            #endregion
+
+
+        }
     }
-}

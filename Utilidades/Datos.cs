@@ -107,7 +107,7 @@ namespace ProyectosNoticiasJuan.Utilidades
         }
 
 
-       public static string ObtenerNoticias(int iActivoId,int iCategoria, ref DataTable dt)
+       public static string ObtenerNoticias(int iActivoId,int iCategoria, ref DataSet ds)
         {
             SqlConnection MyConnection = default(SqlConnection);
             SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
@@ -125,8 +125,8 @@ namespace ProyectosNoticiasJuan.Utilidades
                 MyDataAdapter.SelectCommand.Parameters.Add("@categoria_id", SqlDbType.Int);
                 MyDataAdapter.SelectCommand.Parameters["@categoria_id"].Value = iCategoria;
 
-                dt = new DataTable();
-                MyDataAdapter.Fill(dt);
+                ds = new DataSet();
+                MyDataAdapter.Fill(ds);
                 return "";
             }
             catch (Exception ex)
@@ -468,8 +468,46 @@ namespace ProyectosNoticiasJuan.Utilidades
             }
         }
 
+        #region "SORTING / PAGING"
+
+        public static void SortGridView(ref string sSortExpression, ref string sDirection)
+        {
+
+            if (!string.IsNullOrEmpty(sSortExpression) | !string.IsNullOrEmpty(sDirection))
+            {
+                string myDirection = sDirection.Trim();
+
+                if (string.IsNullOrEmpty(myDirection))
+                {
+                    myDirection = System.Web.UI.WebControls.SortDirection.Descending.ToString();
+                }
+                else
+                {
+                    if (myDirection == "ASC")
+                    {
+                        myDirection = System.Web.UI.WebControls.SortDirection.Descending.ToString();
+                    }
+                    else
+                    {
+                        myDirection = System.Web.UI.WebControls.SortDirection.Ascending.ToString();
+                    }
+                }
+
+                switch (myDirection.ToUpper().Trim())
+                {
+                    case "ASCENDING":
+                        sDirection = " ASC";
+                        break;
+                    case "DESCENDING":
+                        sDirection = " DESC";
+                        break;
+                }
 
 
+            }
+
+        }
+         #endregion
 
 
     }

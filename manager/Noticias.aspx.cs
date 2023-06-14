@@ -45,13 +45,13 @@ namespace ProyectosNoticiasJuan.manager
         void CargarNoticias()
         {
             string sRet = "";
-            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
 
-            sRet = Utilidades.Datos.ObtenerNoticias(-1,-1,ref dt);
+            sRet = Utilidades.Datos.ObtenerNoticias(-1,-1,ref ds);
 
             if (sRet == "")
             {
-                gvNoticias.DataSource = dt;
+                gvNoticias.DataSource = ds;
                 gvNoticias.DataBind();
 
             }

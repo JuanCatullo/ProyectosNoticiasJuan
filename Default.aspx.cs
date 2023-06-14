@@ -28,10 +28,10 @@ namespace ProyectosNoticiasJuan
         void CargarNoticias()
         {
             string sRet = "";
-            DataTable dt = new DataTable();
-            sRet = Utilidades.Datos.ObtenerNoticias(1, int.Parse(dlCategorias.SelectedValue.ToString()), ref dt);
+            DataSet ds = new DataSet();
+            sRet = Utilidades.Datos.ObtenerNoticias(1, int.Parse(dlCategorias.SelectedValue.ToString()), ref ds);
 
-            gvNoticias.DataSource = dt;
+            gvNoticias.DataSource = ds;
             gvNoticias.DataBind();
         }
 

@@ -2,16 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+     <p> <asp:Label ID="lblCuentaRegistros" runat="server" Text=""></asp:Label></p>
 
     <div class="row">
         <div class="col-md-12">
 
 
-            <asp:GridView cssClass=" table-striped table-hover table-bordered text-center" ID="gvUsuarios" runat="server" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gvUsuarios_RowCommand"  >
+            <asp:GridView cssClass=" table-striped table-hover table-bordered text-center" ID="gvUsuarios" runat="server" AutoGenerateColumns="False"  EmptyDataText="No se encontraron registros" DataKeyNames="id" OnRowCommand="gvUsuarios_RowCommand" AllowPaging="true" PageSize="5" AllowSorting="true" OnSorting="gvUsuarios_Sorting" PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="gvUsuarios_PageIndexChanging">
                 <Columns>
-                    <asp:BoundField DataField="nombre" HeaderText="Nombre"></asp:BoundField>
-                    <asp:BoundField DataField="apellido" HeaderText="Apellido"></asp:BoundField>
-                    <asp:BoundField DataField="email" HeaderText="Email"></asp:BoundField>
+                     <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" />
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre"  SortExpression="nombre"></asp:BoundField>
+                    <asp:BoundField DataField="apellido" HeaderText="Apellido"  SortExpression="apellido"></asp:BoundField>
+                    <asp:BoundField DataField="email" HeaderText="Email"  SortExpression="email"></asp:BoundField>
                 <asp:TemplateField HeaderText="Editar">
 
                     <ItemTemplate>

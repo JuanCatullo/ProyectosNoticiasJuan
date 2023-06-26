@@ -160,6 +160,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="SQL-16-05-2023.sql" />
     <Content Include="WebServiceNoticias.asmx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="ctrlMenuNavegacion.ascx" />

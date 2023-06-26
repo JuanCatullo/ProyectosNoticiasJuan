@@ -12,6 +12,34 @@ namespace ProyectosNoticiasJuan.Utilidades
 {
     public class Datos
     {
+
+        
+        public static string ObtenerContrasena(string sMail, ref DataTable dt)
+        {
+            SqlConnection MyConnection = default(SqlConnection);
+            SqlDataAdapter MyDataAdapter = default(SqlDataAdapter);
+
+            try
+            {
+                MyConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+                MyDataAdapter = new SqlDataAdapter("spObtenerContrasena", MyConnection);
+                MyDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                MyDataAdapter.SelectCommand.Parameters.Add("@mail", SqlDbType.VarChar, 100);
+                MyDataAdapter.SelectCommand.Parameters["@mail"].Value = sMail;
+
+                dt = new DataTable();
+                MyDataAdapter.Fill(dt);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
         public static string ObtenerPaises(ref DataTable dt)
         {
             SqlConnection MyConnection = default(SqlConnection);
@@ -508,6 +536,8 @@ namespace ProyectosNoticiasJuan.Utilidades
 
         }
          #endregion
+
+
 
 
     }

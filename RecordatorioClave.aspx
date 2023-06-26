@@ -10,8 +10,8 @@
       
     <div>
     <Button ID="RClave" runat="server" Text="Recordar Clave" CssClass="btn btn-info" OnClick="btnRecordarClave_Click"
-         style="width: 100px; height: 25px;"/>
-         </div>      
+         style="width: 150px; height: 50px; background-color: #0066FF;"/></div>      
+
 
 
 </asp:Content>
